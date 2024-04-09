@@ -1,0 +1,46 @@
+{
+    "name": "PlayeControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "c3a4b009-fac9-4717-860d-89c76ca77233",
+            "actions": [
+                {
+                    "name": "Use",
+                    "type": "Button",
+                    "id": "53eff290-7e77-464f-9095-48a0330be081",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "64253c03-76e0-402d-878b-d2da4cb741c5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Joystick",
+            "bindingGroup": "Joystick",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
