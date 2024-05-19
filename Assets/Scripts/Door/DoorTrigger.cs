@@ -16,16 +16,16 @@ public class DoorTrigger : MonoBehaviour
         _animator = GetComponent<Animator>();
         }
 
-    private void OnTriggerEnter(Collider other)
+  /*  private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             camAnim.SetBool("ısTriggered", true);
             openPanel.SetActive(true);
         }
-    }
+    }*/
 
-    private void OnTriggerExit(Collider other)
+     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {

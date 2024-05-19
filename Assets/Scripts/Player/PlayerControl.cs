@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject player;
     [SerializeField] float moveSpeed;
     [SerializeField] float turnSpeed;
     [SerializeField] float jumpForce;
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.A))
         {
             animator.SetTrigger("isAttack");    
            
