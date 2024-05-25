@@ -49,10 +49,14 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.P))
         {
-            animator.SetTrigger("isAttack");    
+            animator.SetBool("isAttack", true);    
            
+        }
+        else
+        {
+            animator.SetBool("isAttack", false);
         }
     }
     public void Running()

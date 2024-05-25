@@ -8,40 +8,39 @@ using UnityEngine.Rendering;
 
 public class EnemyMec : MonoBehaviour
 {
-   [SerializeField] private Animator animator;
-   public NavMeshAgent agent;
-   public Transform player;
-   public LayerMask whatIsGround, whatIsPlayer;
-   public float health;
+   [Header("Core")]
+   [SerializeField] float enemySpeed;
+   [SerializeField] Transform player;
+   [SerializeField] NavMeshAgent agent;
+   [SerializeField] LayerMask whatIsGround, whatIsPlayer;
+   public int health;
 
-   //patroling
+   private Animator animator;
+  [SerializeField] private ParticleSystem damageParticle;
+  ParticleSystem particle;
+
+   [Header("Patroling")]
    public Vector3 walkPoint;
    private bool walkPointSet;
    public float walkPointRange;
    
-   //attacking
-   public float timeBetwwenAttacks;
+   [Header("Attacking")]
    private bool alreadyAttacked;
  //  public GameObject projectile;
    
-   //states
+   [Header("States")]
    public float sightRange, attackRange;
    public bool playerIsSightRange, playerInAttackRange;
 
-   public GameObject enemyBullet;
-   public Transform spawnPoint;
-   public float enemySpeed;
    private void Awake()
    {
-      player = GameObject.Find("Player").transform;
+      
       agent = GetComponent<NavMeshAgent>();
-      animator = GetComponent<Animator>();
+     animator = GetComponent<Animator>();
    }
 
    private void Update()
    {
-      animator.SetBool("isRunning",true);
-      
       playerIsSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
       playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
       
@@ -70,6 +69,7 @@ public class EnemyMec : MonoBehaviour
       float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
       
       walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z +randomZ);
+      animator.SetBool("EnemyIsRunning",true);
       if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) ;
       walkPointSet = true;
    }
@@ -79,32 +79,27 @@ public class EnemyMec : MonoBehaviour
    }
    void AttackPlayer()
    {
-     // animator.SetBool("isRunning", false);
       // eenmy hareekt etmeyecek
       agent.SetDestination(transform.position);
+      animator.SetBool("EnemyIsAttack", true);
+     // Invoke("DamageParticle",.5f);
       transform.LookAt(player);
       
-         //attack yapacak
-         Rigidbody bRig = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-         bRig.AddForce(transform.forward * 6f, ForceMode.Impulse);
-         bRig.AddForce(transform.up * 1.2f, ForceMode.Impulse);
-         Destroy(bRig, .7f);
-         alreadyAttacked = true;
-         Invoke(nameof(ResetAttack), timeBetwwenAttacks);
-      
+      Debug.Log(health);
+   }
+   void DamageParticle()
+   {
+      particle = Instantiate(damageParticle, transform.position, Quaternion.identity);
+      ResetAttack();
+
    }
    void ResetAttack()
    {
       alreadyAttacked = false;
+      Invoke("DamageParticle",20f);
 
    }
-   public void TakeDamage(int damage)
-   {
-      health -= damage;
-      if(health <=0)
-         Invoke(nameof(DestroyEnemy),.5f);
-   }
-   void DestroyEnemy()
+   public void DestroyEnemy()
    {
       Destroy(gameObject);
    }
