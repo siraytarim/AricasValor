@@ -1,8 +1,7 @@
 # Arica's Valor
 Arica:
 
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20151719.png" width="400" height="400"> 
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20151733.png" width="400" height="400">
+<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20151719.png" width="400" height="400"> <img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20151733.png" width="400" height="400">
 
 Arica' Valor, bir mini 3D roguelike oyunu olup, oyuncuların düşmanlarla kılıçla savaştığı, altın toplayarak ve düşmanları öldürerek özellikler kazandığı ve kendini geliştirdiği bir oyundur.
 
