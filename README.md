@@ -1,5 +1,5 @@
 # Arica's Valor
-[Logo](C:\Users\hp\OneDrive\Resimler\Ekran Görüntüleri)
+[[Logo](C:\Users\hp\OneDrive\Resimler\Ekran Görüntüleri)](https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20151719.png)
 
 Arica' Valor, bir mini 3D roguelike oyunu olup, oyuncuların düşmanlarla kılıçla savaştığı, altın toplayarak ve düşmanları öldürerek özellikler kazandığı ve kendini geliştirdiği bir oyundur.
 
