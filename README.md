@@ -6,11 +6,7 @@ Arica:
 
 
 Oyundan Görseller:
-<img src= "https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20215718.png" width="400" height="400" > 
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20Görüntüsü%20(277).png" width="400" hright="400">
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220019.png" width="400" height="400" >
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220255.png" width="400" height="400" >
-<img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220139.png" width="400" height="400">
+<img src= "https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20215718.png" width="400" height="400" > <img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20Görüntüsü%20(277).png" width="400" height="400"> <img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220019.png" width="400" height="400" > <img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220255.png" width="400" height="400" > <img src="https://github.com/siraytarim/AricasValor/blob/main/Game/Ekran%20görüntüsü%202024-05-28%20220139.png" width="400" height="400">
 
 
 Arica' Valor, bir mini 3D roguelike oyunu olup, oyuncuların düşmanlarla kılıçla savaştığı, altın toplayarak ve düşmanları öldürerek özellikler kazandığı ve kendini geliştirdiği bir oyundur.
