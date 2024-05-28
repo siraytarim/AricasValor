@@ -3,16 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGetDamage : MonoBehaviour
+namespace Player
 {
-    public static move instance { get; private set; }
-    private void OnTriggerEnter(Collider other)
+    public class PlayerGetDamage : MonoBehaviour
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        public static PlayerGetDamage instance { get; private set; }
+
+        private void Awake()
         {
-            instance.health--;
-            if(instance.health <=0)
-                Invoke(nameof(instance.DestroyPlayer),.1f);
+            if (instance != null && instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                instance = this;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("EnemySword"))
+            {
+                move.instance.Playerhealth--;
+                if (move.instance.Playerhealth <= 0)
+                    Invoke(nameof(move.instance.DestroyPlayer), .1f);
+            }
         }
     }
 }

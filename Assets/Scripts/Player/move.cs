@@ -3,33 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace  Player{
 public class move : MonoBehaviour
 {
-   [Header("Core")]
-    [SerializeField] float moveSpeed;
+    public static move instance { get; private set; }
+    
+    [Header("Core")] [SerializeField] float moveSpeed;
     [SerializeField] float jumpHeight;
     [SerializeField] float turnSpeed;
-    public int health;
-    
-   [Header("Ground")]
-    [SerializeField] Transform groundCheck;
+    public int Playerhealth;
+
+    [Header("Ground")] [SerializeField] Transform groundCheck;
     [SerializeField] float groundDistance;
     [SerializeField] float gravityScale;
     [SerializeField] LayerMask groundMask;
     private bool isGrounded;
-    
-    [Header("Attack")]
-    [SerializeField] ParticleSystem hitEffect;
+
+    [Header("Attack")] [SerializeField] private ParticleSystem hitEffect;
     [SerializeField] Transform sword;
     [SerializeField] private Transform enemy;
-    ParticleSystem hitEffectInstance;
-    
+    ParticleSystem hitEffectInstance; 
+
     private CharacterController controller;
     private GameObject player;
     private Animator _animator;
-    
+
     private Vector3 velocity;
     private Vector3 moveDirection;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -64,7 +76,7 @@ public class move : MonoBehaviour
 
         //attack kontrol
         Attack();
-        
+
         // Zıplama girişi
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -90,6 +102,7 @@ public class move : MonoBehaviour
         hitEffectInstance = Instantiate(hitEffect, sword.position, Quaternion.identity);
 
     }
+
     void nextAttack()
     {
         _animator.SetBool("isAttack", false);
@@ -100,5 +113,6 @@ public class move : MonoBehaviour
         Destroy(player);
     }
 
+}
 
 }
