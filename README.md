@@ -24,9 +24,19 @@ Arica's Valor, oyuncuların Arica köyünü korumak için düşmanlarla savaşı
 - **3D Grafikler:** Zengin ve etkileyici 3D dünyayı keşfedin.
 - **Roguelike Mekanikler:** Her oynayışta farklı düşmanlar ve ödüller.
 
+
 ## Oynanış
 
 1. **Savaş:** Düşmanlarla kılıç kullanarak savaşın ve hayatta kalmaya çalışın.
 2. **Altın Toplama:** Haritada bulunan altınları toplayarak puan kazanın.
 3. **Özellik Kazanma:** Altınları kullanarak karakterinizin yeteneklerini geliştirin.
 4. **Gelişim:** Oyunda ilerledikçe daha güçlü düşmanlarla karşılaşın ve daha fazla ödül kazanın.
+
+
+## Credits
+
+### Assets
+ - [Character Sword Model] (https://assetstore.unity.com/packages/3d/characters/humanoids/rpg-tiny-hero-duo-pbr-polyart-225148)
+ - [Character Models And Animations] (https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/rpg-hero-pbr-hp-polyart-121480)
+   
+
