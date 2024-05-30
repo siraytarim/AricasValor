@@ -12,7 +12,7 @@ Oyundan Görseller:
 
 ## Oyun Hakkında
 
-Arica' Valor, bir mini 3D roguelike oyunu olup, oyuncuların düşmanlarla kılıçla savaştığı, altın toplayarak ve düşmanları öldürerek özellikler kazandığı ve kendini geliştirdiği bir oyundur.
+Arica's Valor, mini bir 3D roguelike oyunu olup, oyuncuların düşmanlarla kılıçla savaştığı, altın toplayarak ve düşmanları öldürerek özellikler kazandığı ve kendini geliştirdiği bir oyundur.
 
 
 ## Özellikler
