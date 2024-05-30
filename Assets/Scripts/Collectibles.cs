@@ -13,29 +13,46 @@ public class Collectibles : MonoBehaviour
    [SerializeField] Animator _openanimator;
    [SerializeField] Animator _coinanimator;
    //[SerializeField] GameObject coinBase;
-   //[SerializeField] Text coinText;
-    int coins;
+   [SerializeField] Text coinText;
+    int coinCount=0;
     private void Start()
+    {
+       UpdateCoins();
+    }
+
+   private void Update()
    {
-      //coins = Convert.ToInt32(coinText.text);
+      ChestOpen();
    }
 
-   private void OnMouseDown()
+   private void ChestOpen()
    {
-     
-      _openanimator.SetBool("chestOpen", true);    //sandığı açma
-      Invoke("GoldAnim",1.6f);
-      coins += 30;
+      if (Input.GetMouseButtonDown(1))
+      {
+         _openanimator.SetBool("chestOpen", true); //sandığı açma
+         Invoke("AddCoinText",2.5f);
+         Invoke("GoldAnim", 1.6f);
+      }
    }
 
+   void AddCoinText()
+   {
+      coinCount += 30;
+      UpdateCoins();
+   }
    void GoldAnim()
    {
-      _coinanimator.SetBool("Gold", true);
-     //Invoke("Destroy",1.6f);
+      _coinanimator.SetTrigger("Gold");
+     Invoke("Destroy",.75f);
    }
 
- /*  void Destroy()
+  void Destroy()
    {
       Destroy(collectible);
-   }*/
+   }
+
+   void UpdateCoins()
+   {
+      coinText.text = "" + coinCount.ToString();
+   }
 }

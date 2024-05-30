@@ -45,15 +45,14 @@ public class DoorTrigger : MonoBehaviour
         {
             _animator.SetBool("IsDoorOpen", false);
             openPanel.SetActive(false); 
-            Invoke("ParticleStart",3f);
-            
+            Invoke("ParticleStart",1f);
         }
     }
 
     void ParticleStart()
     {
         spawnPoint = Instantiate(stoneParticle, stones.position, Quaternion.identity);
-        Invoke("DestroyStoneStack", 1.2f);;
+        Invoke("DestroyStoneStack", .4f);;
 
     }
     void DestroyStoneStack()

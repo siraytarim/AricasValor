@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace  Player{
 public class move : MonoBehaviour
 {
     public static move instance { get; private set; }
-    
+    public static bool isAttacked;
     [Header("Core")] [SerializeField] float moveSpeed;
     [SerializeField] float jumpHeight;
     [SerializeField] float turnSpeed;
@@ -44,6 +45,7 @@ public class move : MonoBehaviour
     }
     void Start()
     {
+        isAttacked = false;
         controller = GetComponent<CharacterController>();
         player = GetComponent<GameObject>();
         _animator = GetComponent<Animator>();
@@ -90,6 +92,7 @@ public class move : MonoBehaviour
 
     public void Attack()
     {
+        isAttacked = true;
         if (Input.GetMouseButtonDown(0))
         {
             _animator.SetTrigger("Attack");

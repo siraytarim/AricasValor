@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 namespace Enemy
@@ -25,11 +26,11 @@ namespace Enemy
        }
        private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Sword"))
+            if (move.isAttacked)
             {
                 EnemyMec.Instance.animator.SetTrigger("Hitted");
                 damageEffectInstance = Instantiate(damageEffect, transform.position, Quaternion.identity);
-                 EnemyMec.Instance.health -= EnemyMec.Instance.health*damageMultiplier;
+                 EnemyMec.Instance.health -= damageMultiplier;
                  Debug.Log(EnemyMec.Instance.health);
                  if (EnemyMec.Instance.health <= 0)
                  {
