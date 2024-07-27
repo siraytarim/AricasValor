@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float gravityScale;
     [SerializeField] float rotateSpeed;
     public CharacterController controller;
+    private bool isAttacked;
 
     private Vector3 moveDirection;
     
@@ -20,12 +21,13 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        isAttacked = false;
     }
 
     private void Update()
     {
         Running();
-        Attack();
+       // Attack();
         
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxis("Vertical")) +
@@ -47,18 +49,7 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
-    public void Attack()
-    {
-        if (Input.GetKey(KeyCode.P))
-        {
-            animator.SetBool("isAttack", true);    
-           
-        }
-        else
-        {
-            animator.SetBool("isAttack", false);
-        }
-    }
+    
     public void Running()
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)

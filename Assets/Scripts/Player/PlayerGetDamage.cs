@@ -1,33 +1,65 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerGetDamage : MonoBehaviour
+    namespace Health
     {
-        public static PlayerGetDamage instance { get; private set; }
-
-        private void Awake()
+        public class PlayerGetDamage : MonoBehaviour
         {
-            if (instance != null && instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                instance = this;
-            }
-        }
+            [Header("HealthBar")] 
+            [SerializeField] private int maxhealth ;
+            [SerializeField] private int currentHealth;
+            [SerializeField] public HealthBarr healthBar;
+            [SerializeField] private int damage;
+            private Animator anim;
+            public static PlayerGetDamage instance { get; private set; }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("EnemySword"))
+            private void Awake()
             {
-                move.instance.Playerhealth--;
-                if (move.instance.Playerhealth <= 0)
-                    Invoke(nameof(move.instance.DestroyPlayer), .1f);
+                if (instance != null && instance != this)
+                {
+                    Destroy(this);
+                }
+                else
+                {
+                    instance = this;
+                }
+            }
+
+            private void Start()
+            {
+                anim = GetComponent<Animator>();
+                maxhealth = currentHealth;
+                healthBar.MaxHealth(maxhealth);
+                
+            }
+
+            void Update()
+            {
+                if (EnemyMec.isAttacked)
+                {
+                    PlayerHitted();
+                }
+            }
+
+            void PlayerHitted()
+            {
+                anim.SetTrigger("Hitted");
+                Debug.Log(currentHealth + " player health");
+                currentHealth -= damage;
+                healthBar.SetHealht(currentHealth);
+                if (currentHealth <= 0)
+                {
+                    DestroyPlayer();
+                }
+            }
+            void DestroyPlayer()
+            {
+                Destroy(gameObject);
             }
         }
     }

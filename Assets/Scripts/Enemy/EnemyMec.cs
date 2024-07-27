@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,9 +14,11 @@ namespace Enemy
       public static EnemyMec Instance { get; private set; }
 
       [Header("Core")] [SerializeField] float enemySpeed;
+      [SerializeField] public static bool isAttacked;
       [SerializeField] Transform player;
       [SerializeField] NavMeshAgent agent;
       [SerializeField] LayerMask whatIsGround, whatIsPlayer;
+      [SerializeField] private Transform Enemy;
 
       public float health = 5f;
 
@@ -32,6 +35,8 @@ namespace Enemy
 
       [Header("States")] public float sightRange, attackRange;
       public bool playerIsSightRange, playerInAttackRange;
+      float lastAttackTime = 0f;  // Son saldırı zamanını saklar
+      float attackInterval = 20f;  
 
       private void Awake()
       {  if (Instance != null && Instance != this)
@@ -45,6 +50,7 @@ namespace Enemy
             
          agent = GetComponent<NavMeshAgent>();
          animator = GetComponent<Animator>();
+         isAttacked = false;
       }
 
       private void Update()
@@ -54,8 +60,12 @@ namespace Enemy
 
          if (!playerIsSightRange && !playerInAttackRange) Patroling();
          if (playerIsSightRange && !playerInAttackRange) ChasePlayer();
-         if (playerIsSightRange && playerInAttackRange) AttackPlayer();
+         if (playerIsSightRange && playerInAttackRange && (Time.time - lastAttackTime >= attackInterval) && !alreadyAttacked)
+         {
+            AttackPlayer();
+         }
       }
+   
 
       void Patroling()
       {
@@ -90,26 +100,36 @@ namespace Enemy
       void AttackPlayer()
       {
          // eenmy hareekt etmeyecek
-         agent.SetDestination(transform.position);
-         animator.SetBool("EnemyIsAttack", true);
-          Invoke("DamageParticle",.5f);
+        // agent.SetDestination(Enemy.position);
+        agent.SetDestination(player.position);
+         isAttacked = true;
+         animator.SetTrigger("isEnemyAttacked");
+         particle = Instantiate(damageParticle, transform.position, Quaternion.identity);
          transform.LookAt(player);
-         Debug.Log(health);
+         Debug.Log(health + " player health");
+         ResetAttack();
       }
+      void ResetAttack()
+      {
+         alreadyAttacked = false;
+         Invoke("AttackPlayer", 20f);
 
-      void DamageParticle()
+      }
+      
+    /*  IEnumerator AttackRoutine()
+      {
+         yield return new WaitForSeconds(0.5f);  // Particle system'in gecikme süresi
+         DamageParticle();
+      }*/
+
+   /*   void DamageParticle()
       {
          particle = Instantiate(damageParticle, transform.position, Quaternion.identity);
          ResetAttack();
 
-      }
+      }*/
 
-      void ResetAttack()
-      {
-         alreadyAttacked = false;
-         Invoke("DamageParticle", 20f);
-
-      }
+      
       public void DestroyEnemy()
       {
          Destroy(gameObject);
