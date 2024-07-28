@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActivatingDungeon : MonoBehaviour
 {
     [SerializeField] private GameObject[] dungeons;
-    private int currentDungeonIndex=0;
+    public int currentDungeonIndex=0;
 
     private void Start()
     {
@@ -49,6 +49,7 @@ public class ActivatingDungeon : MonoBehaviour
         {
             ActivateDungeon(currentDungeonIndex + 1);
         }
+        else Debug.Log("artamıyor");
     }
 
     public void PreviousDungeon()

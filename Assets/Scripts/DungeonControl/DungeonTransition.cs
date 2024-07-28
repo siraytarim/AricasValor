@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class DungeonTransition : MonoBehaviour
 {
-     ActivatingDungeon activatingdungeon;
-    public bool isNext;
+    public ActivatingDungeon activatingdungeon;
+    public bool isNext=false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            isNext = true;
+          //  Invoke("IsNextFalse",0f);
             if (isNext)
             {
                 activatingdungeon.NextDungeon();
+                Debug.Log(activatingdungeon.currentDungeonIndex);
             }
             else
             {
@@ -22,4 +25,9 @@ public class DungeonTransition : MonoBehaviour
             }
         }
     }
+
+   /* void IsNextFalse()
+    {
+        isNext = false;
+    }*/
 }
